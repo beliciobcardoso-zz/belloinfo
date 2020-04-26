@@ -118,32 +118,32 @@ function saveImageMessage(file) {
 function saveMessagingDeviceToken() {
 	// TODO 10: Save the device token in the realtime datastore
 
-	/* 	firebase.messaging().getToken().then(function (currentToken) {
-			if (currentToken) {
-				console.log('Obteve o token do dispositivo FCM:', currentToken);
-				// Saving the Device Token to the datastore.
-				firebase.firestore().collection('fcmTokens').doc(currentToken)
-					.set({ uid: firebase.auth().currentUser.uid });
-			} else {
-				// Need to request permissions to show notifications.
-				requestNotificationsPermissions();
-			}
-		}).catch(function (error) {
-			console.error('Não foi possível obter o token de mensagem.', error);
-		});*/
+	firebase.messaging().getToken().then(function (currentToken) {
+		if (currentToken) {
+			console.log('Obteve o token do dispositivo FCM:', currentToken);
+			// Saving the Device Token to the datastore.
+			firebase.firestore().collection('fcmTokens').doc(currentToken)
+				.set({ uid: firebase.auth().currentUser.uid });
+		} else {
+			// Need to request permissions to show notifications.
+			requestNotificationsPermissions();
+		}
+	}).catch(function (error) {
+		console.error('Não foi possível obter o token de mensagem.', error);
+	});
 }
 
 // Requests permissions to show notifications.
 function requestNotificationsPermissions() {
 	// TODO 11: Request permissions to send notifications.
 
-	/* 	console.log('Solicitando permissão de notificações ...');
-		firebase.messaging().requestPermission().then(function () {
-			// Notification permission granted.
-			saveMessagingDeviceToken();
-		}).catch(function (error) {
-			console.error('Não foi possível obter permissão para notificar.', error);
-		}); */
+	console.log('Solicitando permissão de notificações ...');
+	firebase.messaging().requestPermission().then(function () {
+		// Notification permission granted.
+		saveMessagingDeviceToken();
+	}).catch(function (error) {
+		console.error('Não foi possível obter permissão para notificar.', error);
+	});
 }
 
 // Disparado quando um arquivo é selecionado através do seletor de mídia.
