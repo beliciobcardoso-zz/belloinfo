@@ -46,7 +46,7 @@ function getUserName() {
 	return firebase.auth().currentUser.displayName;
 }
 
-// Returns true if a user is signed-in.
+// Retorna true se um usuário estiver conectado.
 function isUserSignedIn() {
 	// TODO 6: Return true if a user is signed-in.
 	return !!firebase.auth().currentUser;
@@ -182,7 +182,7 @@ function onMessageFormSubmit(e) {
 	}
 }
 
-// Triggers when the auth state change for instance when the user signs-in or signs-out.
+// Dispara quando o estado de autenticação é alterado, por exemplo, quando o usuário entra ou sai.
 function authStateObserver(user) {
 	if (user) { // User is signed in!
 		// Get the signed-in user's profile pic and name.
@@ -245,7 +245,7 @@ var MESSAGE_TEMPLATE =
 	'<div class="timestamp"></div>' +
 	'</div>';
 
-// Adds a size to Google Profile pics URLs.
+// Adiciona um tamanho aos URLs de fotos do perfil do Google.
 function addSizeToGoogleProfilePic(url) {
 	if (url.indexOf('googleusercontent.com') !== -1 && url.indexOf('?') === -1) {
 		return url + '?sz=150';
@@ -349,9 +349,9 @@ function toggleButton() {
 // Checks that the Firebase SDK has been correctly setup and configured.
 function checkSetup() {
 	if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
-		window.alert('You have not configured and imported the Firebase SDK. ' +
-			'Make sure you go through the codelab setup instructions and make ' +
-			'sure you are running the codelab using `firebase serve`');
+		window.alert('Você não configurou e importou o Firebase SDK. ' +
+			'Certifique-se de seguir as instruções de configuração do codelab' +
+			' e verifique se está executando o codelab usando o `firebase serve`');
 	}
 }
 
@@ -388,7 +388,7 @@ imageButtonElement.addEventListener('click', function (e) {
 });
 mediaCaptureElement.addEventListener('change', onMediaFileSelected);
 
-// initialize Firebase
+// initialize Firebase auth
 initFirebaseAuth();
 
 // TODO: Enable Firebase Performance Monitoring.
